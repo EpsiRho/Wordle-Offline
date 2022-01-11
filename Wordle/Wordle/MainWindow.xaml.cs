@@ -171,10 +171,10 @@ namespace Wordle
             using (StreamReader reader = new StreamReader(stream))
             {
                 string result = reader.ReadToEnd();
-                words = result.Split('\n').ToList();
+                words = result.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
             }
-
+           
             string wrd = $"{Rows[CurrentRow].Letters[0].Character}{Rows[CurrentRow].Letters[1].Character}{Rows[CurrentRow].Letters[2].Character}{Rows[CurrentRow].Letters[3].Character}{Rows[CurrentRow].Letters[4].Character}";
 
             if (!words.Contains(wrd.ToLower()))
